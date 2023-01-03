@@ -126,12 +126,43 @@ const getTail = (list) => {
   //   console.log(list.data);
 };
 
-console.log(append(linkedList, createNode(4)));
-showList(linkedList);
-console.log(size(linkedList));
+const at = (list, index, counter = 0) => {
+  if (index === counter) return list.value;
+
+  // TODO: error handling somewhere?
+  return at(list.nextNode, index, counter + 1);
+};
+
+const getModifiedTail = (list) => {
+  if (list.nextNode.nextNode === null) return list;
+
+  return getModifiedTail(list.nextNode);
+};
+
+const pop = (list) => {
+  // get to the tail and remove the tail
+  // find the tail of the list
+  const nodeBeforeTail = getModifiedTail(list);
+
+  nodeBeforeTail.nextNode = null;
+  // console.log(nodeBeforeTail, tail);
+
+  return list;
+};
+
+// SAMPLE COMMANDS:
+append(linkedList, createNode(4));
+// showList(linkedList);
+// console.log(size(linkedList));
 
 const newList = prepend(linkedList, createNode(5));
-showList(newList);
-console.log(size(newList));
+// showList(newList);
+// console.log(size(newList));
+// console.log(newList);
 
-// TODO: num 6 - 10 and extra credit
+// console.log(at(newList, 4));
+// TODO: num 7 - 10 and extra credit
+// 6 done (at)
+
+// showList(pop(newList));
+console.log(pop(newList));
