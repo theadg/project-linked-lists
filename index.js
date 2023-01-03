@@ -163,6 +163,7 @@ const newList = prepend(linkedList, createNode(5));
 // console.log(at(newList, 4));
 // TODO: num 7 - 10 and extra credit
 // 6 done (at)
+// 7 done (pop)
 
 // showList(pop(newList));
 console.log(pop(newList));
