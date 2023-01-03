@@ -150,6 +150,14 @@ const pop = (list) => {
   return list;
 };
 
+const contains = (list, value) => {
+  // go through each list.value (node), if it is there return true else false;
+  if (list.value === value) return true;
+  if (list.nextNode === null) return false;
+
+  return contains(list.nextNode, value);
+};
+
 // SAMPLE COMMANDS:
 append(linkedList, createNode(4));
 // showList(linkedList);
@@ -161,9 +169,11 @@ const newList = prepend(linkedList, createNode(5));
 // console.log(newList);
 
 // console.log(at(newList, 4));
-// TODO: num 7 - 10 and extra credit
+// TODO: make it to a class factory
+// TODO: num 9 - 10 and extra credit
 // 6 done (at)
 // 7 done (pop)
+// 8 done (contains)
 
 // showList(pop(newList));
-console.log(pop(newList));
+console.log(contains(pop(newList), 6));
