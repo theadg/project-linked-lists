@@ -1,7 +1,7 @@
 // test script for index.js
 // just copy paste the code to index.js
 
-const testList = createLinkedList();
+const testList = linkedList();
 testList.append(createNode(12));
 
 testList.prepend(createNode(14));
