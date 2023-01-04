@@ -22,14 +22,14 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
     return size(listCopy.nextNode, level + 1);
   };
 
-  const tail = (list) => {
-    if (list.nextNode === null) return list;
+  const tail = (listCopy = list) => {
+    if (listCopy.nextNode === null) return listCopy;
 
-    return tail(list.nextNode);
+    return tail(listCopy.nextNode);
   };
 
-  const head = (list) => {
-    return list;
+  const head = (listCopy = list) => {
+    return listCopy;
   };
 
   const at = (index, counter = 0, listCopy = list) => {
@@ -82,13 +82,12 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
 
   const insertAt = (value, index, listCopy = list, level = 0) => {
     if (level === index - 1) {
-      // modify here
-      // APPROACH ONE:
-      // get the node before
       const createdNode = createNode(value);
-      const transfer = listCopy.nextNode.nextNode;
+      const transfer = listCopy.nextNode;
+
       listCopy.nextNode = createdNode;
       createdNode.nextNode = transfer;
+
       list = listCopy;
 
       return listCopy;
@@ -99,15 +98,19 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
 
   // DEBUG
   const removeAt = (index, listCopy = list, level = 0) => {
-    if (level === index) {
+    if (index === 0) {
       const transfer = listCopy.nextNode.nextNode;
+      listCopy.value = listCopy.nextNode.value;
       listCopy.nextNode = transfer;
+      list = listCopy;
+      console.log('first if');
       return listCopy;
     }
     if (level === index - 1) {
       const transfer = listCopy.nextNode.nextNode;
       listCopy.nextNode = transfer;
       list = listCopy;
+      console.log('second if');
 
       return listCopy;
     }
@@ -160,12 +163,15 @@ testList.prepend(createNode(14));
 // prepend not modifying the list
 // testList.append(createNode(14));
 
-console.log('SIZE', testList.size());
-console.log('AT', testList.at(2));
-console.log('SIZE', testList.size());
-// console.log('POP', testList.pop());
-console.log('CONTAINS', testList.contains(68));
-console.log('FIND', testList.find(0));
+// console.log('SIZE', testList.size());
+// console.log('AT', testList.at(2));
+// console.log('SIZE', testList.size());
+// // console.log('POP', testList.pop());
+// console.log('CONTAINS', testList.contains(68));
+// console.log('FIND', testList.find(0));
 console.log('TOSTRING', testList.toString());
 console.log('INSERT AT', testList.insertAt(69, 1));
-console.log('REMOVE AT', testList.removeAt(0));
+console.log('TOSTRING', testList.toString());
+
+console.log('REMOVE AT', testList.removeAt(1));
+console.log('TOSTRING', testList.toString());
