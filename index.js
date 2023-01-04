@@ -2,14 +2,6 @@
 const createLinkedList = (list) => {};
 
 const createNode = (val = null, next = null) => {
-  const value = () => {
-    return val;
-  };
-
-  const nextNode = () => {
-    return next;
-  };
-
   const node = {
     value: val,
     nextNode: next,
@@ -161,12 +153,13 @@ const removeAt = (list, index, level = 0) => {
 };
 
 // TODO: make it to a class factory
-// TODO:  extra credit
 // 6 done (at)
 // 7 done (pop)
 // 8 done (contains)
 // 9 done (find)
 // 10 done (toString)
+
+// Extra Credit (done)
 
 // SAMPLE COMMANDS:
 append(linkedList, createNode(4));
