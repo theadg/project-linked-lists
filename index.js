@@ -3,17 +3,11 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
   const append = (node) => {
     const currentTail = tail(list);
     currentTail.nextNode = node;
-
-    // return list;
   };
 
-  // Not modifying the list itself :((
-  // TODO: fix
   const prepend = (node) => {
     node.nextNode = list;
     list = node;
-
-    // return list;
   };
 
   const size = (listCopy = list, level = 0) => {
@@ -34,7 +28,6 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
 
   const at = (index, counter = 0, listCopy = list) => {
     if (index === counter) return listCopy.value;
-    // TODO: error handling somewhere?
     return at(index, counter + 1, listCopy.nextNode);
   };
 
