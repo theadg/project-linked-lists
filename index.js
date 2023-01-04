@@ -1,11 +1,22 @@
 // linked list class/factory
-const createLinkedList = (list = { value: 0, nextNode: null }) => {
+const linkedList = () => {
+  let list = {};
   const append = (node) => {
+    if (Object.keys(list).length === 0) {
+      list = node;
+
+      return;
+    }
     const currentTail = tail(list);
     currentTail.nextNode = node;
   };
 
   const prepend = (node) => {
+    if (Object.keys(list).length === 0) {
+      list = node;
+
+      return;
+    }
     node.nextNode = list;
     list = node;
   };
@@ -17,6 +28,7 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
   };
 
   const tail = (listCopy = list) => {
+    if (Object.keys(listCopy).length === 0) return listCopy;
     if (listCopy.nextNode === null) return listCopy;
 
     return tail(listCopy.nextNode);
@@ -27,6 +39,7 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
   };
 
   const at = (index, counter = 0, listCopy = list) => {
+    if (index >= size(list)) return 'Cannot Compute';
     if (index === counter) return listCopy.value;
     return at(index, counter + 1, listCopy.nextNode);
   };
@@ -132,3 +145,21 @@ const createNode = (val = null, next = null) => {
 
   return node;
 };
+const testList = linkedList();
+testList.append(createNode(12));
+
+testList.prepend(createNode(14));
+console.log(testList.list);
+console.log('SIZE', testList.size());
+console.log('AT', testList.at(2));
+// console.log('SIZE', testList.size());
+console.log('POP', testList.pop());
+console.log('SIZE', testList.size());
+
+console.log('CONTAINS', testList.contains(68));
+// console.log('FIND', testList.find(0));
+console.log('TOSTRING', testList.toString());
+// console.log('INSERT AT', testList.insertAt(69, 1));
+// console.log('TOSTRING', testList.toString());
+// console.log('REMOVE AT', testList.removeAt(1));
+// console.log('TOSTRING', testList.toString());
