@@ -158,6 +158,31 @@ const contains = (list, value) => {
   return contains(list.nextNode, value);
 };
 
+const find = (list, value, level = 0) => {
+  if (list.value === value) {
+    return level;
+  }
+  if (list.nextNode === null && list.value !== value) {
+    return `${value} not found`;
+  }
+
+  return find(list.nextNode, value, level + 1);
+};
+
+const toString = (list, nodeValue = '') => {
+  if (list.nextNode === null) return `${nodeValue} null`;
+
+  return toString(list.nextNode, nodeValue + `( ${list.value} ) -> `);
+};
+
+// TODO: make it to a class factory
+// TODO:  extra credit
+// 6 done (at)
+// 7 done (pop)
+// 8 done (contains)
+// 9 done (find)
+// 10 done (toString)
+
 // SAMPLE COMMANDS:
 append(linkedList, createNode(4));
 // showList(linkedList);
@@ -169,11 +194,8 @@ const newList = prepend(linkedList, createNode(5));
 // console.log(newList);
 
 // console.log(at(newList, 4));
-// TODO: make it to a class factory
-// TODO: num 9 - 10 and extra credit
-// 6 done (at)
-// 7 done (pop)
-// 8 done (contains)
 
 // showList(pop(newList));
-console.log(contains(pop(newList), 6));
+// console.log(contains(pop(newList), 5));
+// console.log(find(newList, 4));
+console.log(toString(newList));
