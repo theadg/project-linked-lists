@@ -1,48 +1,5 @@
 // linked list class/factory
-const createLinkedList = (list) => {
-  const append = (val) => {
-    // list.push(val);
-  };
-
-  const prepend = (val) => {
-    list.unshift(val);
-  };
-
-  const size = () => {
-    return list.length - 1;
-
-    // probably a recursion? to find or just a for each loop
-  };
-
-  //   first  element
-  const head = () => {
-    return list[0];
-  };
-
-  //  last element
-  const tail = () => {
-    return list[size()];
-  };
-
-  const at = (index) => {
-    return list[index];
-  };
-
-  const pop = () => {
-    list.pop();
-    return list;
-  };
-  return {
-    list,
-    append,
-    prepend,
-    size,
-    head,
-    tail,
-    at,
-    pop,
-  };
-};
+const createLinkedList = (list) => {};
 
 const createNode = (val = null, next = null) => {
   const value = () => {
