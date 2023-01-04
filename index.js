@@ -50,7 +50,6 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
     const nodeBeforeTail = getModifiedTail(list);
 
     nodeBeforeTail.nextNode = null;
-    // console.log(nodeBeforeTail, tail);
     return list;
   };
 
@@ -103,15 +102,12 @@ const createLinkedList = (list = { value: 0, nextNode: null }) => {
       listCopy.value = listCopy.nextNode.value;
       listCopy.nextNode = transfer;
       list = listCopy;
-      console.log('first if');
       return listCopy;
     }
     if (level === index - 1) {
       const transfer = listCopy.nextNode.nextNode;
       listCopy.nextNode = transfer;
       list = listCopy;
-      console.log('second if');
-
       return listCopy;
     }
 
@@ -143,35 +139,3 @@ const createNode = (val = null, next = null) => {
 
   return node;
 };
-
-// TODO: make it to a class factory
-// 6 done (at)
-// 7 done (pop)
-// 8 done (contains)
-// 9 done (find)
-// 10 done (toString)
-
-// Extra Credit (done)
-
-const testList = createLinkedList();
-testList.append(createNode(12));
-
-// console.log(testList.list);
-
-// console.log(testList.prepend(createNode(14)));
-testList.prepend(createNode(14));
-// prepend not modifying the list
-// testList.append(createNode(14));
-
-// console.log('SIZE', testList.size());
-// console.log('AT', testList.at(2));
-// console.log('SIZE', testList.size());
-// // console.log('POP', testList.pop());
-// console.log('CONTAINS', testList.contains(68));
-// console.log('FIND', testList.find(0));
-console.log('TOSTRING', testList.toString());
-console.log('INSERT AT', testList.insertAt(69, 1));
-console.log('TOSTRING', testList.toString());
-
-console.log('REMOVE AT', testList.removeAt(1));
-console.log('TOSTRING', testList.toString());
