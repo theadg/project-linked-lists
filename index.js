@@ -175,6 +175,34 @@ const toString = (list, nodeValue = '') => {
   return toString(list.nextNode, nodeValue + `( ${list.value} ) -> `);
 };
 
+const insertAt = (list, value, index, level = 0) => {
+  if (level === index - 1) {
+    // modify here
+    // APPROACH ONE:
+    // get the node before
+    const createdNode = createNode(value);
+    const transfer = list.nextNode.nextNode;
+    list.nextNode = createdNode;
+    createdNode.nextNode = transfer;
+    return list;
+  }
+
+  return insertAt(list.nextNode, value, index, level + 1);
+};
+
+const removeAt = (list, index, level = 0) => {
+  if (level === index - 1) {
+    // modify here
+    // APPROACH ONE:
+    // get the node before
+    const transfer = list.nextNode.nextNode;
+    list.nextNode = transfer;
+    return list;
+  }
+
+  return removeAt(list.nextNode, index, level + 1);
+};
+
 // TODO: make it to a class factory
 // TODO:  extra credit
 // 6 done (at)
@@ -198,4 +226,10 @@ const newList = prepend(linkedList, createNode(5));
 // showList(pop(newList));
 // console.log(contains(pop(newList), 5));
 // console.log(find(newList, 4));
-console.log(toString(newList));
+// console.log(toString(newList));
+
+showList(newList);
+console.log(insertAt(newList, 69, 2));
+showList(newList);
+console.log(removeAt(newList, 3));
+showList(newList);
