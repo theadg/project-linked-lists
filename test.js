@@ -1,4 +1,5 @@
-// test script for the factory
+// test script for index.js
+// just copy paste the code to index.js
 
 const testList = createLinkedList();
 testList.append(createNode(12));
